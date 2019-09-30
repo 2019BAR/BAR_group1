@@ -48,30 +48,31 @@ A = read.csv('data/CPSData.csv')
 MetroAreaMap = read.csv("data/MetroAreaCodes.csv")
 CountryMap = read.csv("data/CountryCodes.csv")
 nrow(A)
+#131302
 ```
 
 __§ 1.2__ Among the interviewees with a value reported for the Industry variable, what is the most common industry of employment? Please enter the name exactly how you see it.
 ```{r}
 table(A$Industry) %>% sort
-#美國人口中就業行業人口數目
+#Educational and health services
 ```
 
 __§ 1.3__ Which state has the fewest interviewees?
 ```{r}
 table(A$State) %>% sort %>% head
-#受訪者中人口居住較少的州
+#New Mexico
 ```
 
 Which state has the largest number of interviewees?
 ```{r}
 table(A$State) %>% sort %>% tail
-#受訪者中人口居住較多的州
+#California
 ```
 
 __§ 1.4__ What proportion of interviewees are citizens of the United States?
 ```{r}
 table(A$Citizenship) %>% prop.table()
-#受訪者中身份為美國市民的比率
+#0.88833
 ```
 
 __§ 1.5__ For which races are there at least 250 interviewees in the CPS dataset of Hispanic ethnicity? (Select all that apply.) 
@@ -85,7 +86,7 @@ __§ 1.5__ For which races are there at least 250 interviewees in the CPS datase
 
 ```{r}
 tapply(A$Hispanic,A$Race,sum) %>% sort()
-#種族中含西班牙裔之人口總數
+#White、Black、Multiracial、American Indian
 ```
 <br><br><hr>
 
@@ -110,6 +111,7 @@ __§ 2.1__ Which variables have at least one interviewee with a missing (NA) val
 
 ```{r}
 summary(A)
+#MetroAreaCode、Married、Education、EmploymentStatus、Industry
 ```
 
 __§ 2.2__  Which is the most accurate:
@@ -122,13 +124,9 @@ __§ 2.2__  Which is the most accurate:
 
 ```{r}
 tapply(is.na(A$Married),A$Region,mean)
-#人口區域中已婚變數為空值
 tapply(is.na(A$Married),A$Sex,mean)
-#性別中已婚變數為空值
 tapply(is.na(A$Married),A$Age,mean)
-#年紀中已婚變數為空值
 tapply(is.na(A$Married),A$Citizenship,mean)
-#公民身份中已婚變數為空值
 ```
 
 __§ 2.3__ How many states had all interviewees living in a non-metropolitan area (aka they have a missing MetroAreaCode value)? For this question, treat the District of Columbia as a state (even though it is not technically a state).
