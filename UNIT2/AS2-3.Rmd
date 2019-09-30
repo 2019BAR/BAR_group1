@@ -258,7 +258,7 @@ tapply(A$Country=="India", A$MetroArea, sum) %>% sort %>% tail
 In Brazil?
 ```{r}
 tapply(A$Country=="Brazil", A$MetroArea, sum) %>% sort %>% tail
-#‘Boston-Cambridge-Quincy’在Brazil中有最大值的受訪者
+#‘Boston-Cambridge-Quincy’在Brazil中有最大值的受訪
 ```
 
 In Somalia?
