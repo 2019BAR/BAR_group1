@@ -505,7 +505,7 @@ summary {
 
 <h1 class="title toc-ignore">AS2-3: 美國的人口統計和就業資料</h1>
 <h4 class="author">第 1 組</h4>
-<h4 class="date">2019-09-30 23:03:14</h4>
+<h4 class="date">2019-09-30 23:14:21</h4>
 
 </div>
 
@@ -830,50 +830,51 @@ New York-Northern New Jersey-Long Island, NY-NJ-PA
 <div id="section-4-integrating-country-of-birth-data" class="section level3">
 <h3>Section-4 Integrating Country of Birth Data</h3>
 <p><strong>§ 4.1</strong> What is the name of the variable added to the CPS data frame by this merge operation?</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="co">#如3.2變數為Country、MetroArea</span></a></code></pre></div>
 <p>How many interviewees have a missing value for the new <code>Country</code> variable?</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="kw">sum</span>(<span class="kw">is.na</span>(A<span class="op">$</span>Country))</a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="kw">sum</span>(<span class="kw">is.na</span>(A<span class="op">$</span>Country))</a></code></pre></div>
 <pre><code>[1] 176</code></pre>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="co">#Country變數有176個空值</span></a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="co">#Country變數有176個空值</span></a></code></pre></div>
 <p><strong>§ 4.2</strong> Among all interviewees born outside of North America, which country was the most common place of birth?</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="kw">table</span>(A<span class="op">$</span>Country) <span class="op">%&gt;%</span><span class="st"> </span>sort <span class="op">%&gt;%</span><span class="st"> </span>tail</a></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="kw">table</span>(A<span class="op">$</span>Country) <span class="op">%&gt;%</span><span class="st"> </span>sort <span class="op">%&gt;%</span><span class="st"> </span>tail</a></code></pre></div>
 <pre><code>
   Puerto Rico         China         India   Philippines        Mexico United States 
           518           581           770           839          3921        115063 </code></pre>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="co">#美國為首訪者中最多數的出生地</span></a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="co">#美國為首訪者中最多數的出生地</span></a></code></pre></div>
 <p><strong>§ 4.3</strong> What proportion of the interviewees from the “New York-Northern New Jersey-Long Island, NY-NJ-PA” metropolitan area have a country of birth that is not the United States?</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="kw">table</span>(A<span class="op">$</span>Country[A<span class="op">$</span>MetroArea<span class="op">==</span><span class="st">&quot;New York-Northern New Jersey-Long Island, NY-NJ-PA&quot;</span>] <span class="op">==</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb76-2" data-line-number="2"><span class="st">  &quot;United States&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>prop.table</a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1"><span class="kw">table</span>(A<span class="op">$</span>Country[A<span class="op">$</span>MetroArea<span class="op">==</span><span class="st">&quot;New York-Northern New Jersey-Long Island, NY-NJ-PA&quot;</span>] <span class="op">==</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb77-2" data-line-number="2"><span class="st">  &quot;United States&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>prop.table</a></code></pre></div>
 <pre><code>
  FALSE   TRUE 
 0.3087 0.6913 </code></pre>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="co">#首訪者中有0.3087的比率來自“New York-Northern New Jersey-Long Island, NY-NJ-PA&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1"><span class="co">#首訪者中有0.3087的比率來自“New York-Northern New Jersey-Long Island, NY-NJ-PA&quot;</span></a></code></pre></div>
 <p><strong>§ 4.4</strong> Which metropolitan area has the largest number (note – not proportion) of interviewees with a country of birth in India?</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1"><span class="kw">tapply</span>(A<span class="op">$</span>Country<span class="op">==</span><span class="st">&quot;India&quot;</span>, A<span class="op">$</span>MetroArea, sum) <span class="op">%&gt;%</span><span class="st"> </span>sort <span class="op">%&gt;%</span><span class="st"> </span>tail</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="kw">tapply</span>(A<span class="op">$</span>Country<span class="op">==</span><span class="st">&quot;India&quot;</span>, A<span class="op">$</span>MetroArea, sum) <span class="op">%&gt;%</span><span class="st"> </span>sort <span class="op">%&gt;%</span><span class="st"> </span>tail</a></code></pre></div>
 <pre><code>                      Kansas City, MO-KS        Milwaukee-Waukesha-West Allis, WI 
                                       11                                       12 
                               Fresno, CA       San Jose-Sunnyvale-Santa Clara, CA 
                                       16                                       19 
 Hartford-West Hartford-East Hartford, CT               Detroit-Warren-Livonia, MI 
                                       26                                       30 </code></pre>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1"><span class="co">#'Detroit-Warren-Livonia'在India中有最大值的</span></a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1"><span class="co">#'Detroit-Warren-Livonia'在India中有最大值的</span></a></code></pre></div>
 <p>In Brazil?</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1"><span class="kw">tapply</span>(A<span class="op">$</span>Country<span class="op">==</span><span class="st">&quot;Brazil&quot;</span>, A<span class="op">$</span>MetroArea, sum) <span class="op">%&gt;%</span><span class="st"> </span>sort <span class="op">%&gt;%</span><span class="st"> </span>tail</a></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1"><span class="kw">tapply</span>(A<span class="op">$</span>Country<span class="op">==</span><span class="st">&quot;Brazil&quot;</span>, A<span class="op">$</span>MetroArea, sum) <span class="op">%&gt;%</span><span class="st"> </span>sort <span class="op">%&gt;%</span><span class="st"> </span>tail</a></code></pre></div>
 <pre><code>Sacramento-Arden-Arcade-Roseville, CA                  Canton-Massillon, OH 
                                     2                                     3 
           Phoenix-Mesa-Scottsdale, AZ   Davenport-Moline-Rock Island, IA-IL 
                                     3                                     4 
 Miami-Fort Lauderdale-Miami Beach, FL        Boston-Cambridge-Quincy, MA-NH 
                                    16                                    18 </code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1"><span class="co">#‘Boston-Cambridge-Quincy’在Brazil中有最大值的受訪</span></a></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1"><span class="co">#‘Boston-Cambridge-Quincy’在Brazil中有最大值的受訪</span></a></code></pre></div>
 <p>In Somalia?</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1"><span class="kw">tapply</span>(A<span class="op">$</span>Country<span class="op">==</span><span class="st">&quot;Somalia&quot;</span>, A<span class="op">$</span>MetroArea, sum) <span class="op">%&gt;%</span><span class="st"> </span>sort <span class="op">%&gt;%</span><span class="st"> </span>tail</a></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1"><span class="kw">tapply</span>(A<span class="op">$</span>Country<span class="op">==</span><span class="st">&quot;Somalia&quot;</span>, A<span class="op">$</span>MetroArea, sum) <span class="op">%&gt;%</span><span class="st"> </span>sort <span class="op">%&gt;%</span><span class="st"> </span>tail</a></code></pre></div>
 <pre><code>              York-Hanover, PA Youngstown-Warren-Boardman, OH 
                              0                              0 
                     Dayton, OH                   Richmond, VA 
                              1                              1 
    Phoenix-Mesa-Scottsdale, AZ                  St. Cloud, MN 
                              7                              7 </code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="co">#Phoenix-Mesa-Scottsdale,St. Cloud在Somalia中有最大值的受訪者</span></a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1"><span class="co">#Phoenix-Mesa-Scottsdale,St. Cloud在Somalia中有最大值的受訪者</span></a></code></pre></div>
 <p><br><br><br></p>
 </div>
 
