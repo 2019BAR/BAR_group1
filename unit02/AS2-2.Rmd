@@ -267,7 +267,7 @@ sapply(L, function(df){
   tapply(df$StockPrice, format(df$Date,'%m'), mean)
   })
 
-#每間公司的1月股價皆高於12月,因此12月為較低者
+#每間公司的1月股價皆高於12月，因此12月為較低者
 ```
 <br>
 <p class="wwl">
