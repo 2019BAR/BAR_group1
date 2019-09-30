@@ -72,7 +72,7 @@ table(A$State) %>% sort %>% tail
 __§ 1.4__ What proportion of interviewees are citizens of the United States?
 ```{r}
 table(A$Citizenship) %>% prop.table()
-#0.88833
+#Native Citizenship=0.88833、Naturalized＝0.05387
 ```
 
 __§ 1.5__ For which races are there at least 250 interviewees in the CPS dataset of Hispanic ethnicity? (Select all that apply.) 
@@ -127,17 +127,18 @@ tapply(is.na(A$Married),A$Region,mean)
 tapply(is.na(A$Married),A$Sex,mean)
 tapply(is.na(A$Married),A$Age,mean)
 tapply(is.na(A$Married),A$Citizenship,mean)
+#Age
 ```
 
 __§ 2.3__ How many states had all interviewees living in a non-metropolitan area (aka they have a missing MetroAreaCode value)? For this question, treat the District of Columbia as a state (even though it is not technically a state).
 ```{r}
 table(is.na(A$MetroAreaCode), A$State)
-#州中都會區代碼為空值之數目
+#Alaska、Wyoming
 ```
 
 How many states had all interviewees living in a metropolitan area? Again, treat the District of Columbia as a state.
 ```{r}
-#
+#Columbia、New Jersey、Rhode Island
 ```
 
 __§ 2.4__ Which region of the United States has the largest proportion of interviewees living in a non-metropolitan area?
@@ -179,10 +180,12 @@ nrow(CountryMap)
 __§ 3.2__ What is the name of the variable that was added to the data frame by the merge() operation?
 ```{r}
 A = merge(A, CountryMap, by.x="CountryOfBirthCode", by.y="Code", all.x=TRUE)
+#Country
 ```
 
 ```{r}
 A = merge(A, MetroAreaMap, by.x="MetroAreaCode", by.y="Code", all.x=TRUE)
+#MetroArea
 ```
 
 How many interviewees have a missing value for the new metropolitan area variable?
@@ -225,7 +228,6 @@ tapply(A$Education=='No high school diploma', A$MetroArea, mean, na.rm=T) %>%
 
 __§ 4.1__ What is the name of the variable added to the CPS data frame by this merge operation?
 ```{r}
-#
 ```
 
 How many interviewees have a missing value for the new `Country` variable?

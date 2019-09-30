@@ -505,7 +505,7 @@ summary {
 
 <h1 class="title toc-ignore">AS2-3: 美國的人口統計和就業資料</h1>
 <h4 class="author">第 1 組</h4>
-<h4 class="date">2019-09-30 22:29:03</h4>
+<h4 class="date">2019-09-30 23:03:14</h4>
 
 </div>
 
@@ -583,7 +583,7 @@ Agriculture, forestry, fishing, and hunting                                 Info
 <pre><code>
      Citizen, Native Citizen, Naturalized          Non-Citizen 
              0.88833              0.05387              0.05781 </code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co">#0.88833</span></a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co">#Native Citizenship=0.88833、Naturalized＝0.05387</span></a></code></pre></div>
 <p><strong>§ 1.5</strong> For which races are there at least 250 interviewees in the CPS dataset of Hispanic ethnicity? (Select all that apply.)</p>
 <ul>
 <li>American Indian</li>
@@ -687,8 +687,9 @@ Agriculture, forestry, fishing, and hunting                                 Info
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">tapply</span>(<span class="kw">is.na</span>(A<span class="op">$</span>Married),A<span class="op">$</span>Citizenship,mean)</a></code></pre></div>
 <pre><code>     Citizen, Native Citizen, Naturalized          Non-Citizen 
              0.21162              0.02305              0.06482 </code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="co">#Age</span></a></code></pre></div>
 <p><strong>§ 2.3</strong> How many states had all interviewees living in a non-metropolitan area (aka they have a missing MetroAreaCode value)? For this question, treat the District of Columbia as a state (even though it is not technically a state).</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">table</span>(<span class="kw">is.na</span>(A<span class="op">$</span>MetroAreaCode), A<span class="op">$</span>State)</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">table</span>(<span class="kw">is.na</span>(A<span class="op">$</span>MetroAreaCode), A<span class="op">$</span>State)</a></code></pre></div>
 <pre><code>       
         Alabama Alaska Arizona Arkansas California Colorado Connecticut Delaware
   FALSE    1020      0    1327      724      11333     2545        2593     1696
@@ -717,16 +718,16 @@ Agriculture, forestry, fishing, and hunting                                 Info
         West Virginia Wisconsin Wyoming
   FALSE           344      1882       0
   TRUE           1065       804    1624</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="co">#州中都會區代碼為空值之數目</span></a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="co">#Alaska、Wyoming</span></a></code></pre></div>
 <p>How many states had all interviewees living in a metropolitan area? Again, treat the District of Columbia as a state.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="co">#</span></a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="co">#Columbia、New Jersey、Rhode Island</span></a></code></pre></div>
 <p><strong>§ 2.4</strong> Which region of the United States has the largest proportion of interviewees living in a non-metropolitan area?</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">tapply</span>(<span class="kw">is.na</span>(A<span class="op">$</span>MetroAreaCode), A<span class="op">$</span>Region, mean) <span class="op">%&gt;%</span><span class="st"> </span>sort</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">tapply</span>(<span class="kw">is.na</span>(A<span class="op">$</span>MetroAreaCode), A<span class="op">$</span>Region, mean) <span class="op">%&gt;%</span><span class="st"> </span>sort</a></code></pre></div>
 <pre><code>Northeast     South      West   Midwest 
    0.2162    0.2378    0.2437    0.3479 </code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="co">#Midwest</span></a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="co">#Midwest</span></a></code></pre></div>
 <p><strong>§ 2.5</strong> Which state has a proportion of interviewees living in a non-metropolitan area closest to 30%?</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">tapply</span>(<span class="kw">is.na</span>(A<span class="op">$</span>MetroAreaCode), A<span class="op">$</span>State, mean) <span class="op">%&gt;%</span><span class="st"> </span>sort</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw">tapply</span>(<span class="kw">is.na</span>(A<span class="op">$</span>MetroAreaCode), A<span class="op">$</span>State, mean) <span class="op">%&gt;%</span><span class="st"> </span>sort</a></code></pre></div>
 <pre><code>District of Columbia           New Jersey         Rhode Island           California 
              0.00000              0.00000              0.00000              0.02048 
              Florida        Massachusetts             Maryland             New York 
@@ -753,36 +754,38 @@ Agriculture, forestry, fishing, and hunting                                 Info
              0.69431              0.70250              0.73739              0.75586 
              Montana               Alaska              Wyoming 
              0.83608              1.00000              1.00000 </code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">abs</span>(<span class="fl">0.3</span> <span class="op">-</span><span class="st"> </span><span class="kw">tapply</span>(<span class="kw">is.na</span>(A<span class="op">$</span>MetroAreaCode), A<span class="op">$</span>State, mean)) <span class="op">%&gt;%</span><span class="st"> </span>sort <span class="op">%&gt;%</span><span class="st"> </span>head</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw">abs</span>(<span class="fl">0.3</span> <span class="op">-</span><span class="st"> </span><span class="kw">tapply</span>(<span class="kw">is.na</span>(A<span class="op">$</span>MetroAreaCode), A<span class="op">$</span>State, mean)) <span class="op">%&gt;%</span><span class="st"> </span>sort <span class="op">%&gt;%</span><span class="st"> </span>head</a></code></pre></div>
 <pre><code>     Wisconsin        Indiana South Carolina      Minnesota       Oklahoma       Missouri 
      0.0006701      0.0085828      0.0130277      0.0150685      0.0276428      0.0286713 </code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="co">#Wisconsin</span></a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="co">#Wisconsin</span></a></code></pre></div>
 <p>Which state has the largest proportion of non-metropolitan interviewees, ignoring states where all interviewees were non-metropolitan?</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw">tapply</span>(<span class="kw">is.na</span>(A<span class="op">$</span>MetroAreaCode), A<span class="op">$</span>State, mean) <span class="op">%&gt;%</span><span class="st"> </span>sort <span class="op">%&gt;%</span>tail</a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="kw">tapply</span>(<span class="kw">is.na</span>(A<span class="op">$</span>MetroAreaCode), A<span class="op">$</span>State, mean) <span class="op">%&gt;%</span><span class="st"> </span>sort <span class="op">%&gt;%</span>tail</a></code></pre></div>
 <pre><code> South Dakota  North Dakota West Virginia       Montana        Alaska       Wyoming 
        0.7025        0.7374        0.7559        0.8361        1.0000        1.0000 </code></pre>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="co">#Alaska、Wyoming</span></a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="co">#Alaska、Wyoming</span></a></code></pre></div>
 <p><br><br><br></p>
 </div>
 <div id="section-3-integrating-metropolitan-area-data" class="section level3">
 <h3>Section-3 Integrating Metropolitan Area Data</h3>
 <p><strong>§ 3.1</strong> How many observations (codes for metropolitan areas) are there in MetroAreaMap?</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw">nrow</span>(MetroAreaMap)</a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw">nrow</span>(MetroAreaMap)</a></code></pre></div>
 <pre><code>[1] 271</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="co">#271項觀察值</span></a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="co">#271項觀察值</span></a></code></pre></div>
 <p>How many observations (codes for countries) are there in CountryMap?</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw">nrow</span>(CountryMap)</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">nrow</span>(CountryMap)</a></code></pre></div>
 <pre><code>[1] 149</code></pre>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="co">#149項觀察值</span></a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="co">#149項觀察值</span></a></code></pre></div>
 <p><strong>§ 3.2</strong> What is the name of the variable that was added to the data frame by the merge() operation?</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">A =<span class="st"> </span><span class="kw">merge</span>(A, CountryMap, <span class="dt">by.x=</span><span class="st">&quot;CountryOfBirthCode&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;Code&quot;</span>, <span class="dt">all.x=</span><span class="ot">TRUE</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">A =<span class="st"> </span><span class="kw">merge</span>(A, MetroAreaMap, <span class="dt">by.x=</span><span class="st">&quot;MetroAreaCode&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;Code&quot;</span>, <span class="dt">all.x=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">A =<span class="st"> </span><span class="kw">merge</span>(A, CountryMap, <span class="dt">by.x=</span><span class="st">&quot;CountryOfBirthCode&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;Code&quot;</span>, <span class="dt">all.x=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb53-2" data-line-number="2"><span class="co">#Country</span></a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1">A =<span class="st"> </span><span class="kw">merge</span>(A, MetroAreaMap, <span class="dt">by.x=</span><span class="st">&quot;MetroAreaCode&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;Code&quot;</span>, <span class="dt">all.x=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb54-2" data-line-number="2"><span class="co">#MetroArea</span></a></code></pre></div>
 <p>How many interviewees have a missing value for the new metropolitan area variable?</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">sum</span>(<span class="kw">is.na</span>(A<span class="op">$</span>MetroArea))</a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="kw">sum</span>(<span class="kw">is.na</span>(A<span class="op">$</span>MetroArea))</a></code></pre></div>
 <pre><code>[1] 34238</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="co">#34238個空值於A中的MetroArea</span></a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="co">#34238個空值於A中的MetroArea</span></a></code></pre></div>
 <p><strong>§ 3.3</strong> Which metropolitan areas has the largest number of interviewees?</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="kw">table</span>(A<span class="op">$</span>MetroArea) <span class="op">%&gt;%</span><span class="st"> </span>sort <span class="op">%&gt;%</span><span class="st"> </span>tail</a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="kw">table</span>(A<span class="op">$</span>MetroArea) <span class="op">%&gt;%</span><span class="st"> </span>sort <span class="op">%&gt;%</span><span class="st"> </span>tail</a></code></pre></div>
 <pre><code>
               Providence-Fall River-Warwick, MA-RI 
                                               2284 
@@ -796,38 +799,37 @@ Agriculture, forestry, fishing, and hunting                                 Info
                                               4177 
 New York-Northern New Jersey-Long Island, NY-NJ-PA 
                                               5409 </code></pre>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="co">#‘New York-Northern New Jersey-Long Island, NY-NJ-PA’為最多數受訪者的都會區</span></a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="co">#‘New York-Northern New Jersey-Long Island, NY-NJ-PA’為最多數受訪者的都會區</span></a></code></pre></div>
 <p><strong>§ 3.4</strong> Which metropolitan area has the highest proportion of interviewees of Hispanic ethnicity?</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">tapply</span>(A<span class="op">$</span>Hispanic, A<span class="op">$</span>MetroArea, mean) <span class="op">%&gt;%</span><span class="st"> </span>sort <span class="op">%&gt;%</span><span class="st"> </span>tail</a></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="kw">tapply</span>(A<span class="op">$</span>Hispanic, A<span class="op">$</span>MetroArea, mean) <span class="op">%&gt;%</span><span class="st"> </span>sort <span class="op">%&gt;%</span><span class="st"> </span>tail</a></code></pre></div>
 <pre><code>           San Antonio, TX              El Centro, CA                El Paso, TX 
                     0.6442                     0.6869                     0.7910 
  Brownsville-Harlingen, TX McAllen-Edinburg-Pharr, TX                 Laredo, TX 
                     0.7975                     0.9487                     0.9663 </code></pre>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="co">#‘Laredo, TX’為最多比率受訪者的都會區</span></a></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="co">#‘Laredo, TX’為最多比率受訪者的都會區</span></a></code></pre></div>
 <p><strong>§ 3.5</strong> Determine the number of metropolitan areas in the United States from which at least 20% of interviewees are Asian.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="kw">tapply</span>(A<span class="op">$</span>Race <span class="op">==</span><span class="st"> &quot;Asian&quot;</span>, A<span class="op">$</span>MetroArea, mean) <span class="op">%&gt;%</span><span class="st"> </span>sort <span class="op">%&gt;%</span><span class="st"> </span>tail</a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="kw">tapply</span>(A<span class="op">$</span>Race <span class="op">==</span><span class="st"> &quot;Asian&quot;</span>, A<span class="op">$</span>MetroArea, mean) <span class="op">%&gt;%</span><span class="st"> </span>sort <span class="op">%&gt;%</span><span class="st"> </span>tail</a></code></pre></div>
 <pre><code>                 Warner Robins, GA                         Fresno, CA 
                             0.1667                             0.1848 
              Vallejo-Fairfield, CA San Jose-Sunnyvale-Santa Clara, CA 
                             0.2030                             0.2418 
  San Francisco-Oakland-Fremont, CA                       Honolulu, HI 
                             0.2468                             0.5019 </code></pre>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="co">#Honolulu, HI、San Francisco-Oakland-Fremont, CA、San Jose-Sunnyvale-Santa Clara, CA、Vallejo-Fairfield, CA</span></a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="co">#Honolulu, HI、San Francisco-Oakland-Fremont, CA、San Jose-Sunnyvale-Santa Clara, CA、Vallejo-Fairfield, CA</span></a></code></pre></div>
 <p><strong>§ 3.6</strong> Passing na.rm=TRUE to the tapply function, determine which metropolitan area has the smallest proportion of interviewees who have received no high school diploma.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="kw">tapply</span>(A<span class="op">$</span>Education<span class="op">==</span><span class="st">'No high school diploma'</span>, A<span class="op">$</span>MetroArea, mean, <span class="dt">na.rm=</span>T) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb66-2" data-line-number="2"><span class="st">  </span>sort <span class="op">%&gt;%</span><span class="st"> </span>head</a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="kw">tapply</span>(A<span class="op">$</span>Education<span class="op">==</span><span class="st">'No high school diploma'</span>, A<span class="op">$</span>MetroArea, mean, <span class="dt">na.rm=</span>T) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb67-2" data-line-number="2"><span class="st">  </span>sort <span class="op">%&gt;%</span><span class="st"> </span>head</a></code></pre></div>
 <pre><code>           Iowa City, IA        Bowling Green, KY    Kalamazoo-Portage, MI 
                  0.02913                  0.03704                  0.05051 
     Champaign-Urbana, IL Bremerton-Silverdale, WA             Lawrence, KS 
                  0.05155                  0.05405                  0.05952 </code></pre>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="co">#Iowa City, IA</span></a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="co">#Iowa City, IA</span></a></code></pre></div>
 <p><br><br></p>
 <hr />
 </div>
 <div id="section-4-integrating-country-of-birth-data" class="section level3">
 <h3>Section-4 Integrating Country of Birth Data</h3>
 <p><strong>§ 4.1</strong> What is the name of the variable added to the CPS data frame by this merge operation?</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="co">#</span></a></code></pre></div>
 <p>How many interviewees have a missing value for the new <code>Country</code> variable?</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="kw">sum</span>(<span class="kw">is.na</span>(A<span class="op">$</span>Country))</a></code></pre></div>
 <pre><code>[1] 176</code></pre>
