@@ -252,7 +252,7 @@ table(A$Country[A$MetroArea=="New York-Northern New Jersey-Long Island, NY-NJ-PA
 __§ 4.4__ Which metropolitan area has the largest number (note -- not proportion) of interviewees with a country of birth in India? 
 ```{r}
 tapply(A$Country=="India", A$MetroArea, sum) %>% sort %>% tail
-#'Detroit-Warren-Livonia'在India中有最大值的受訪者
+#'Detroit-Warren-Livonia'在India中有最大值的
 ```
 
 In Brazil?
